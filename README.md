@@ -63,6 +63,9 @@ Em resumo, um e-commerce é uma aplicação web (ou mobile) especializada em **c
 
 ## Criando o E-Commerce
 
+- **Infra**
+    - [On-Premises](./INFRA/On-Premises.md)
+    - [Pública](./INFRA/publica.md)
 - **Front End**
     - [O que é ?](./FE/)
     - [Regras de Negócio](./FE/regras.md)
