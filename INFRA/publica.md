@@ -1,4 +1,4 @@
-# Arquitetura
+# Pública
 
 Para subir essa arquitetura de **e-commerce (Front End ↔ Back End ↔ Banco de Dados)**, você precisa escolher uma estratégia de infraestrutura. A escolha depende do tamanho do projeto, quantidade de usuários, orçamento e necessidade de escala.
 

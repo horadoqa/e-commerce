@@ -1,6 +1,6 @@
-# LOCAL
+# On-Premises
 
-Para começar **localmente**, a recomendação é manter uma arquitetura simples, mas já organizada como uma aplicação real. O ideal é separar **Front End**, **Back End** e **Banco de Dados**, mesmo rodando tudo na sua máquina.
+Para começar **On-Premises**, a recomendação é manter uma arquitetura simples, mas já organizada como uma aplicação real. O ideal é separar **Front End**, **Back End** e **Banco de Dados**, mesmo rodando tudo na sua máquina.
 
 Uma arquitetura inicial recomendada:
 
