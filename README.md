@@ -84,3 +84,25 @@ Em resumo, um e-commerce é uma aplicação web (ou mobile) especializada em **c
     - [O que é ?](./DB/db.md)
     - [Segurança](./DB/seguranca.md)
     - [Testes](./TESTES/BD/db.md)
+
+## Docker com WSL2 sem Docker Desktop
+
+Neste projeto para a infra on-premises iremos usar o Docker com WSL2
+
+Documentação de Instalação: [Docker](./START/docker.md)
+
+O projeto também tem uma automatização com `Makefile`
+
+```bash
+make
+
+Comandos disponíveis
+
+  make install   -> Instala o Docker no WSL2
+  make status    -> Exibe o status do serviço
+  make start     -> Inicia o serviço Docker
+  make stop      -> Para o serviço Docker
+  make restart   -> Reinicia o serviço Docker
+  make version   -> Verifica a versão do Docker
+```
+
