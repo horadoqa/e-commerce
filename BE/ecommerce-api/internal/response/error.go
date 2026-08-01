@@ -6,40 +6,53 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type APIError struct {
-	Code    string `json:"code,omitempty"`
+type ErrorResponse struct {
+	Success bool   `json:"success"`
 	Message string `json:"message"`
 }
 
-func Error(c *gin.Context, status int, code string, message string) {
+func Error(c *gin.Context, status int, message string) {
 
-	c.JSON(status, APIResponse{
+	c.JSON(status, ErrorResponse{
 		Success: false,
-		Error: APIError{
-			Code:    code,
-			Message: message,
-		},
+		Message: message,
 	})
 }
 
 func BadRequest(c *gin.Context, message string) {
 
-	Error(c, http.StatusBadRequest, "BAD_REQUEST", message)
+	Error(
+		c,
+		http.StatusBadRequest,
+		message,
+	)
 }
 
 func NotFound(c *gin.Context, message string) {
 
-	Error(c, http.StatusNotFound, "NOT_FOUND", message)
+	Error(
+		c,
+		http.StatusNotFound,
+		message,
+	)
 }
 
 func Conflict(c *gin.Context, message string) {
 
-	Error(c, http.StatusConflict, "CONFLICT", message)
+	Error(
+		c,
+		http.StatusConflict,
+		message,
+	)
 }
 
 func Unauthorized(c *gin.Context, message string) {
 
-	Error(c, http.StatusUnauthorized, "UNAUTHORIZED", message)
+	Error(
+		c,
+		http.StatusUnauthorized,
+		message,
+	)
 }
 
 func InternalServerError(c *gin.Context) {
@@ -47,7 +60,6 @@ func InternalServerError(c *gin.Context) {
 	Error(
 		c,
 		http.StatusInternalServerError,
-		"INTERNAL_SERVER_ERROR",
 		"Erro interno do servidor.",
 	)
 }

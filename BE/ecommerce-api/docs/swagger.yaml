@@ -1,0 +1,267 @@
+basePath: /
+definitions:
+  dto.ClienteRequest:
+    properties:
+      bairro:
+        type: string
+      cep:
+        type: string
+      cidade:
+        type: string
+      complemento:
+        type: string
+      cpf:
+        type: string
+      dataNascimento:
+        type: string
+      email:
+        type: string
+      endereco:
+        type: string
+      estado:
+        type: string
+      nome:
+        type: string
+      numero:
+        type: string
+      telefone:
+        type: string
+    required:
+    - cpf
+    - email
+    - nome
+    type: object
+  response.ClienteResponse:
+    properties:
+      ativo:
+        type: boolean
+      bairro:
+        type: string
+      cep:
+        type: string
+      cidade:
+        type: string
+      complemento:
+        type: string
+      cpf:
+        type: string
+      createdAt:
+        type: string
+      dataNascimento:
+        type: string
+      email:
+        type: string
+      endereco:
+        type: string
+      estado:
+        type: string
+      id:
+        type: string
+      nome:
+        type: string
+      numero:
+        type: string
+      telefone:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  response.ClienteSuccessResponse:
+    properties:
+      data:
+        $ref: '#/definitions/response.ClienteResponse'
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  response.ErrorResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  response.SuccessResponse:
+    properties:
+      data: {}
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: ricardo@email.com
+    name: Ricardo Fahham
+  description: API REST para gerenciamento de um e-commerce.
+  license:
+    name: MIT
+  termsOfService: http://swagger.io/terms/
+  title: Ecommerce API
+  version: "1.0"
+paths:
+  /clientes:
+    get:
+      consumes:
+      - application/json
+      description: Retorna todos os clientes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+      summary: Lista todos os clientes
+      tags:
+      - Clientes
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Dados do cliente
+        in: body
+        name: cliente
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClienteRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.ClienteSuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+      summary: Cria um cliente
+      tags:
+      - Clientes
+  /clientes/{id}:
+    delete:
+      description: Realiza soft delete alterando ativo para false
+      parameters:
+      - description: UUID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+      summary: Desativa um cliente
+      tags:
+      - Clientes
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: UUID do cliente
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ClienteSuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+      summary: Busca um cliente
+      tags:
+      - Clientes
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: UUID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Campos para alteração
+        in: body
+        name: cliente
+        required: true
+        schema:
+          additionalProperties: true
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+      summary: Atualiza parcialmente um cliente
+      tags:
+      - Clientes
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: UUID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Dados completos do cliente
+        in: body
+        name: cliente
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClienteRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ClienteSuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.ErrorResponse'
+      summary: Atualiza um cliente
+      tags:
+      - Clientes
+swagger: "2.0"

@@ -6,23 +6,36 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Success(c *gin.Context, status int, message string, data interface{}) {
+type SuccessResponse struct {
+	Success bool `json:"success"`
 
-	c.JSON(status, APIResponse{
-		Success: true,
-		Message: message,
-		Data:    data,
-	})
+	Message string `json:"message"`
+
+	Data interface{} `json:"data"`
 }
 
 func OK(c *gin.Context, data interface{}) {
 
-	Success(c, http.StatusOK, "Operação realizada com sucesso.", data)
+	c.JSON(http.StatusOK, SuccessResponse{
+
+		Success: true,
+
+		Message: "Operação realizada com sucesso.",
+
+		Data: data,
+	})
 }
 
 func Created(c *gin.Context, data interface{}) {
 
-	Success(c, http.StatusCreated, "Registro criado com sucesso.", data)
+	c.JSON(http.StatusCreated, SuccessResponse{
+
+		Success: true,
+
+		Message: "Registro criado com sucesso.",
+
+		Data: data,
+	})
 }
 
 func NoContent(c *gin.Context) {
