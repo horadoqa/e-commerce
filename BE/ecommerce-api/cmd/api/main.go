@@ -11,7 +11,22 @@ import (
 	"github.com/horadoqa/ecommerce-api/internal/repository"
 	"github.com/horadoqa/ecommerce-api/internal/routes"
 	"github.com/horadoqa/ecommerce-api/internal/service"
+
+	_ "github.com/horadoqa/ecommerce-api/docs"
 )
+
+// @title Ecommerce API
+// @version 1.0
+// @description API REST para gerenciamento de um e-commerce.
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name Ricardo Fahham
+// @contact.email ricardo@email.com
+
+// @license.name MIT
+
+// @host localhost:8080
+// @BasePath /
 
 func main() {
 
@@ -70,7 +85,7 @@ func main() {
 	})
 
 	// Rotas da aplicação
-	routes.ClienteRoutes(
+	routes.SetupRoutes(
 		router,
 		&clienteHandler,
 	)
